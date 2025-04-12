@@ -1,10 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import NavBar from "./Navbar";
-import Body from "./Body";
-import Login from "./Login";
+import NavBar from "./components/Navbar";
+import Body from "./components/Body";
+import Login from "./components/Login";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 function App() {
   return (
+    <Provider store={appStore}>
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<Body />} >
@@ -14,6 +17,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </Provider>
   );
 }
 
