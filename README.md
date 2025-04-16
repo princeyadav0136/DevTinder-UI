@@ -27,6 +27,7 @@
 - Edit Profile Feature
 - Feature connection Page
 - Feature Connection request page
+- Review Request Feature
 
 - Body
  - Navbar

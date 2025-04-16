@@ -1,12 +1,30 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constants";
-import { addRequest } from "../utils/requestSlice";
-import { useEffect } from "react";
+import { addRequest, removeRequest } from "../utils/requestSlice";
+import { useEffect, useState } from "react";
 
 const Requests = () => {
+    const [success, setSuccess] = useState(false);
   const requests = useSelector((store) => store.request);
   const dispatch = useDispatch();
+
+  const reviewRequest = async (status, requestId) => {
+    try {
+        await axios.post(BASE_URL + "request/review/"+ status + "/" + requestId, {}, {
+            withCredentials: true,
+        })
+        setSuccess(true);
+        setTimeout(() => {
+            setSuccess(false);
+        }, 2000);
+        dispatch(removeRequest(requestId));
+    }
+    catch (error) {
+        console.error("Error reviewing request:", error);
+        // Handle the error as needed
+    }
+  }
   const fetchRequests = async () => {
     try {
       const res = await axios.get(BASE_URL + "user/requests/received", {
@@ -50,12 +68,19 @@ const Requests = () => {
               <p>{request?.fromUserId?.about}</p>
             </div>
             <div className="flex gap-2">
-              <button className="btn btn-primary">Reject</button>
-              <button className="btn btn-secondary">Accept</button>
+              <button className="btn btn-primary" onClick={() =>reviewRequest("rejected", request?._id)}>Reject</button>
+              <button className="btn btn-secondary" onClick={() =>reviewRequest("accepted", request?._id)}>Accept</button>
             </div>
           </div>
         ))}
       </div>
+      {success && (
+        <div className="toast toast-top toast-end">
+          <div className="alert alert-success">
+            <span>Action done successfully</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
