@@ -26,6 +26,7 @@
 - Build the user card on the feed
 - Edit Profile Feature
 - Feature connection Page
+- Feature Connection request page
 
 - Body
  - Navbar

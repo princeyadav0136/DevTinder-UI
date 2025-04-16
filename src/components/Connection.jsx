@@ -36,7 +36,7 @@ const Connections = () => {
         <div className="text-center my-10">
             <h1 className="text-bold text-3xl">Connections</h1>
             {
-                connections?.map((user) => <div className="flex m-4 p-4 mx-auto bg-base-300 w-1/2">
+                connections?.map((user) => <div key={user?._id} className="flex m-4 p-4 mx-auto bg-base-300 w-1/2">
                     <div className="">
                         <img src={user?.photoUrl} alt="User" className="w-20 h-20 rounded-full" />
                     </div>
