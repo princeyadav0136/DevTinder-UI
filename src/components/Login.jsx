@@ -23,7 +23,7 @@ const Login = () => {
       )
       .then((res) => {
         dispatch(addUser(res.data));
-        navigate("/connections");
+        navigate("/");
       })
       .catch((err) => {
         setError(err?.response?.data || "Something went wrong");
