@@ -17,7 +17,6 @@ const Body = () => {
       });
       if (res.status === 200) {
         dispatch(addUser(res.data));
-        console.log("User data fetched successfully:", res.data);
         // Dispatch the user data to the Redux store or handle it as needed
       } else {
         console.error("Failed to fetch user data:", res.statusText);

@@ -24,6 +24,7 @@
 - Logout feature
 - Get the Feed and add the Feed in the store
 - Build the user card on the feed
+- Edit Profile Feature
 
 - Body
  - Navbar

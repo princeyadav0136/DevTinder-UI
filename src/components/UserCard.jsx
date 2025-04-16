@@ -1,18 +1,19 @@
 const UserCard = ({user}) => {
+    const {firstName, lastName, photoUrl, about} = user;
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
         <img
-          src={user?.photoUrl}
+          src={photoUrl}
           alt="User"
         />
       </figure>
       <div className="card-body">
         <h2 className="card-title">
-            {user?.firstName} {user?.lastName}
+            {firstName} {lastName}
         </h2>
         <p>
-            {user?.about}
+            {about}
         </p>
         <div className="card-actions justify-center">
           <button className="btn btn-primary">Ignore</button>
