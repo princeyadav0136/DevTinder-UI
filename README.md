@@ -29,6 +29,8 @@
 - Feature Connection request page
 - Review Request Feature
 - Send/Ignore the Usercard from the Feed
+- Signup new User 
+- Testing
 
 - Body
  - Navbar

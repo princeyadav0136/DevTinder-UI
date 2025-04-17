@@ -30,7 +30,7 @@ const Requests = () => {
       const res = await axios.get(BASE_URL + "user/requests/received", {
         withCredentials: true,
       });
-      console.log("Received requests:", res.data.data);
+
       dispatch(addRequest(res.data.data));
     } catch (error) {
       console.error("Error fetching connections data:", error);
@@ -40,7 +40,7 @@ const Requests = () => {
   useEffect(() => {
     fetchRequests();
   }, []);
-  console.log("Requests data:", requests);
+
   if (!requests) return null;
   if (requests.length === 0) {
     return <div>No requests found</div>;

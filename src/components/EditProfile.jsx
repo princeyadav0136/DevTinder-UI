@@ -43,7 +43,7 @@ const EditProfile = ({ user }) => {
       console.error(error);
     }
   };
-  console.log("user", user);
+
   return (
     <div className="flex justify-center space-x-8 my-5">
       <form className="flex justify-center" onSubmit={handleSubmit}>

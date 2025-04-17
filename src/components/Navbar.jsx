@@ -13,7 +13,7 @@ const NavBar = () => {
       await axios.post(BASE_URL + "logout", {}, { withCredentials: true });
       // Clear user data from Redux store
       dispatch(removeUser());
-      console.log("User logged out successfully");
+
       navigate("/login");
     }
     catch (error) {

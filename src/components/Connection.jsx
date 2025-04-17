@@ -23,7 +23,7 @@ const Connections = () => {
     useEffect(() => {
         fetchConnections();
     }, []);
-    console.log("Connections data:", connections);
+
     if (!connections) return null;
     if(connections.length === 0) {
         return (
