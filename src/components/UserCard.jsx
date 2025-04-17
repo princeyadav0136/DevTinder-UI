@@ -1,4 +1,4 @@
-const UserCard = ({user}) => {
+const UserCard = ({handleSendRequest = () => {},user}) => {
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
@@ -15,8 +15,8 @@ const UserCard = ({user}) => {
             {user?.about}
         </p>
         <div className="card-actions justify-center">
-          <button className="btn btn-primary">Ignore</button>
-          <button className="btn btn-secondary">Interested</button>
+          <button className="btn btn-primary" onClick={() => handleSendRequest("ignored", user?._id)}>Ignore</button>
+          <button className="btn btn-secondary" onClick={() => handleSendRequest("interested", user?._id)}>Interested</button>
         </div>
       </div>
     </div>

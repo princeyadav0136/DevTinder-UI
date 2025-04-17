@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
-import { addFeed } from "../utils/feedSlice";
+import { addFeed, removeUserFromFeed } from "../utils/feedSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import UserCard from "./UserCard";
@@ -25,10 +25,26 @@ const Feed = () => {
   useEffect(() => {
     fetchFeed();
   }, []);
+  const handleSendRequest = async (status, userId) => {
+    try {
+      await axios.post(BASE_URL + "request/send/" + status + "/" + userId, {}, {
+        withCredentials: true,
+      })
+      dispatch(removeUserFromFeed(userId));
+    }
+    catch (error) {
+      console.error("Error sending request:", error);
+      // Handle the error as needed
+    }
+  }
+  if(!feed) return null;
+  if (feed.length === 0) {
+    return <div className="flex justify-center my-10">No Nore new User</div>;
+  }
   return (
-    feed && feed[0] && 
+    feed && 
     <div className="flex justify-center my-10">
-      <UserCard user = {feed[0]}/>
+      <UserCard handleSendRequest={handleSendRequest} user = {feed[0]}/>
     </div>
   );
 };
